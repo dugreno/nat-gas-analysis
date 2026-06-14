@@ -83,6 +83,72 @@ exactly the displacement the article attributes to natural gas.
 
 ![CT power-sector CO₂ by fuel](output/CT_co2_fuel_mix.png)
 
+## Was it specifically natural gas that raised emissions? No — it lowered them
+
+CCEA's framing implies the gas buildout made Connecticut dirtier. The
+generation record (EIA net generation by fuel, MWh) shows the opposite
+mechanism. Reproduce with:
+
+```bash
+python claims/01-emissions/analyze_generation.py
+```
+
+**The production source shifted from coal and oil to gas — with nuclear holding
+roughly half throughout:**
+
+| Share of CT net generation | 1990 | 2001 | 2012 | 2024 |
+|----------------------------|-----:|-----:|-----:|-----:|
+| Coal | 10.2% | 12.3% | 1.8% | **0.0%** |
+| Petroleum (oil) | 25.2% | 17.0% | 0.3% | **0.0%** |
+| Natural Gas | 3.6% | 13.4% | 45.8% | **58.2%** |
+| Nuclear | 56.3% | 50.6% | 47.3% | 37.7% |
+| Renewables | 4.7% | 3.9% | 2.7% | 3.1% |
+
+![CT net generation by fuel](output/CT_generation_mix.png)
+
+Gas didn't displace clean power — it displaced **coal and oil**, the two
+dirtiest fuels on the grid. Because gas emits roughly half the CO₂ of coal per
+unit of energy (and a small fraction of the SO₂ and NOx), the **carbon
+intensity** of Connecticut's electricity fell as gas took over:
+
+- **CO₂ per MWh fell 34%** from 2001 (0.374 t/MWh) to 2024 (0.246 t/MWh).
+
+**Counterfactual.** If Connecticut had generated its actual 2024 output
+(44.8 million MWh) using the **2001 fuel mix**, it would have emitted **~16.75
+million tons** of CO₂ instead of the actual **11.0 million**. The switch to gas
+**avoided roughly 5.75 million tons of CO₂ in 2024 alone** — on top of the SO₂
+and NOx collapse.
+
+![CT CO₂ intensity and counterfactual](output/CT_co2_intensity_counterfactual.png)
+
+So the only thing that nudged *total* CO₂ up after 2007 was the **volume** of
+electricity generated, not the fuel. Gas is precisely what kept that growth from
+translating into higher emissions. (The intensity spike in 1996–99 on the chart
+is the period Millstone's nuclear units were offline and the state burned more
+coal and oil — a preview of what a *less* gas-reliant mix looked like.)
+
+## Where does the "~50% increase" in generation actually start?
+
+CCEA writes that "electricity generation 2001-2022/4 rose by nearly 50%." That
+is arithmetically true only because of the **start year**:
+
+| Generation growth to 2024 | Change |
+|---------------------------|-------:|
+| from **2001** (CCEA's baseline) | **+46.8%** |
+| from 2000 | +35.8% |
+| from 2007 | +34.9% |
+| from **1990** | **+27.4%** |
+| from 2012 (the gas-initiative year) | +23.9% |
+
+**2001 is a cyclical low.** Connecticut's Millstone nuclear units were shut down
+by the NRC from 1996 to 1999, so 1996–2001 was a depressed-and-recovering window
+for in-state generation (visible as the trough in the generation chart above).
+Anchoring on 2001 maximizes the apparent growth. Measured from 1990, generation
+rose **27%, not ~50%** — and almost half of the post-2001 increase (+18.5% from
+2001 to 2012) was already in place **before** the 2012 natural-gas initiative
+could have driven new plant output. The "~50%" is real arithmetic on a
+cherry-picked trough, not a clean signature of the gas expansion.
+
 ## Verdict
 
 **The "environmentally worse off" framing is not supported by the absolute

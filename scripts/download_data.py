@@ -30,6 +30,16 @@ SOURCES = {
         "filename": "eia_emission_annual.xlsx",
         "note": "EIA State Electric Power Sector Emissions (CO2/SO2/NOx), 1990-present",
     },
+    # EIA "Net Generation by State by Type of Producer by Energy Source" — the
+    # electricity actually generated (MWh), broken out by fuel, 1990-present.
+    # Lets us test *why* emissions moved (fuel switch vs. output growth) and
+    # check CCEA's "generation rose ~50%" claim against the actual series.
+    # Legacy .xls; reading it requires xlrd (see requirements.txt).
+    "generation": {
+        "url": "https://www.eia.gov/electricity/data/state/annual_generation_state.xls",
+        "filename": "eia_annual_generation_state.xls",
+        "note": "EIA State Net Generation by fuel (MWh), 1990-present",
+    },
 }
 
 
