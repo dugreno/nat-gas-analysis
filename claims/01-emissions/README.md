@@ -149,14 +149,99 @@ rose **27%, not ~50%** — and almost half of the post-2001 increase (+18.5% fro
 could have driven new plant output. The "~50%" is real arithmetic on a
 cherry-picked trough, not a clean signature of the gas expansion.
 
+## The goalpost shift: one base year for generation, another for emissions
+
+This is the core inconsistency. CCEA dates the **generation** increase from
+**2001** ("2001-2022/4 rose by nearly 50%"). Apply that **same 2001 base year**
+to **emissions** and the "worse off" story collapses:
+
+| CT electric power sector, **2001 → 2024** | Change |
+|-------------------------------------------|-------:|
+| Net generation | **+46.8%** |
+| CO₂ | **−3.6%** |
+| SO₂ | **−99.1%** |
+| NOx | **−71.9%** |
+| CO₂ per MWh (carbon intensity) | **−34.3%** |
+
+On CCEA's own clock, Connecticut produced **47% more electricity while emitting
+less CO₂ and a fraction of the SO₂ and NOx.** For the **vast majority of the
+transition**, natural gas let the state make *more* power with *fewer* emissions
+and a steadily falling carbon intensity.
+
+The only way to manufacture an "emissions are up" story is to **move the base
+year** for emissions to the all-time low — 2017 (7.87 MMT), the very bottom of
+the curve — and measure forward (+39.7% to 2024). That uptick is real, but it is
+(a) recent, (b) a *volume* effect at a flat, already-cleaned carbon intensity
+(see the correlation note below), and (c) measured from a cherry-picked trough.
+Using 2001 for the generation claim and ~2017 for the emissions claim is
+shifting the goalposts between two paragraphs of the same argument.
+
+> Recent CO₂ moves with **output**, not fuel: once the coal/oil→gas switch
+> finished (~2012), CT's carbon intensity went flat (~0.246 t/MWh) and annual
+> CO₂ now correlates with generation at **r ≈ 0.96** (2012–2024). The post-2017
+> rise is the grid making more electricity, not the fuel getting dirtier.
+
+## CO₂ should be counted on consumption — and CT's own inventory says it fell ~75%
+
+CCEA's "7.2 MMTCO2e of additional emissions … $506.8M" charges Connecticut for
+the CO₂ of power it **generates and exports**. But CO₂ is a *global* pollutant,
+and the correct way to assign it — the way **Connecticut's own official climate
+accounting** does — is by **consumption**, not in-state production.
+
+Connecticut's DEEP Greenhouse Gas Emissions Inventory (the accounting that
+governs the state's Global Warming Solutions Act targets) uses a
+**consumption-based** method for electricity and is explicit that, because CT is
+a net exporter, *exported-power emissions are not Connecticut's to count*:
+
+> "Connecticut generated more electricity than it consumed in 2019-2021,
+> resulting in the state exporting power… **Emissions associated with electricity
+> generated in-state but not consumed in-state should be included in the GHG
+> inventories of the state where the electricity was purchased.**"
+> — CT DEEP 1990–2021 GHG Inventory, p.16
+
+The inventory even publishes both numbers side by side, and they are the mirror
+image of CCEA's claim — as in-state *generation* emissions rose, *consumption*
+emissions **fell**:
+
+| MMTCO₂e (electric power) | 2019 | 2020 | 2021 |
+|-------------------------|-----:|-----:|-----:|
+| In-state **generation** (what CCEA counts) | 9.5 | 10.2 | 11.0 |
+| Connecticut **consumption** (the GWSA basis) | 5.7 | 3.2 | 3.0 |
+
+> "This increase [in generation emissions] is happening **even while emissions
+> from Connecticut's overall electricity consumption are falling**, because
+> Connecticut is part of a regional electric system…" — CT DEEP, p.16
+
+On the consumption basis, CT's electric-sector emissions fell from **12.3
+MMTCO₂e in 2001 to 3.04 in 2021** — **about −75%** (DEEP Table 1, p.10), and CT
+Mirror reports the inventory shows the sector down "nearly 80% between 2001 and
+2022." (Transcribed figures: [`data/ct_deep_ghg_electric.csv`](data/ct_deep_ghg_electric.csv).)
+
+So measured the way the state itself measures it, the electricity sector is
+Connecticut's **biggest climate success**, not a growing liability. CCEA arrives
+at the opposite conclusion only by adopting a production-plus-exports method that
+Connecticut's own inventory explicitly rejects.
+
 ## Verdict
 
-**The "environmentally worse off" framing is not supported by the absolute
-emissions record.** Even as Connecticut became New England's largest generator
-and output rose ~50%, total power-sector CO₂ fell 13%, and the criteria
-pollutants that most directly drive local public health — NOx and SO₂ — fell 77%
-and 99%. A state whose air pollution from power generation has fallen by these
-margins is not plausibly "worse off" environmentally because of that generation.
+**The "environmentally worse off" framing is not supported by the record, and it
+rests on a shifting baseline.**
+
+- Measured on **CCEA's own 2001 base year**, Connecticut generated **47% more**
+  electricity while CO₂ fell 3.6%, SO₂ fell 99%, NOx fell 72%, and carbon
+  intensity fell 34%. For nearly the entire transition, gas meant *more* power at
+  *fewer* emissions.
+- The recent CO₂ uptick CCEA leans on only appears by re-baselining to the 2017
+  all-time low, and it is a **generation-volume** effect at a flat carbon
+  intensity — not the fuel getting dirtier.
+- On the accounting that actually governs Connecticut's climate goals —
+  **consumption-based**, per the state's GHG inventory — electric-sector
+  emissions fell **~75% since 2001**, and the state explicitly does **not** count
+  the exported-power emissions CCEA bills it for.
+
+A sector whose emissions have fallen by these margins, by the state's own
+official measure, is Connecticut's biggest climate success — not the liability
+the report describes.
 
 ## Honest treatment of CCEA's strongest sub-points
 
@@ -169,15 +254,15 @@ A credible line-by-line review has to engage CCEA's framing on its own terms:
    down, and even from 2007 **SO₂ (−94%) and NOx (−49%) kept falling steeply**.
    The 2007 line is marked on the chart above so readers can see this directly.
 
-2. **"7.2 MMTCO2e of additional emissions" from exports.** CCEA assigns the CO₂
-   of exported power to Connecticut and prices it at the social cost of carbon.
-   But (a) CO₂ is a global pollutant — those tons are not local "public health"
-   exposure; and (b) exported gas generation displaces *dirtier* marginal
-   generation elsewhere in the region, so attributing it as pure added harm to
-   Connecticut double-counts. For the *local* health pollutants that actually
-   vary with where power is burned (NOx, SO₂), the in-state trend is sharply
-   down, and per the article's EPA point, **90–95% of Connecticut's measured
-   pollution is attributable to out-of-state sources** — not its own power plants.
+2. **"7.2 MMTCO2e of additional emissions" from exports.** This is addressed in
+   full under *"CO₂ should be counted on consumption"* above: Connecticut's own
+   GHG inventory assigns exported-power emissions to the purchasing state and
+   shows consumption-based electric emissions *falling* ~75% since 2001. Two
+   further points: CO₂ is a *global* pollutant, so exported tons are not local
+   "public health" exposure; and for the *local* health pollutants that do vary
+   with where power is burned (NOx, SO₂), the in-state trend is sharply down —
+   and per the article's EPA point, **90–95% of Connecticut's measured pollution
+   is attributable to out-of-state sources**, not its own power plants.
 
 3. **Scope.** This dataset is the electric power sector only. CCEA's claim is
    also about the power sector, so the comparison is apples-to-apples; economy-

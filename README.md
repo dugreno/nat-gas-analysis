@@ -27,7 +27,7 @@ says. Where a claim holds up, it says so; where it doesn't, it shows why.
 
 | # | Claim (as stated by CCEA) | Status | Analysis |
 |---|---------------------------|--------|----------|
-| 01 | Connecticut is "worse off because of the environmental impact" of gas generation | Not supported — power-sector CO₂ −13%, NOx −77%, SO₂ −99% since 2000 even as generation rose ~50% | [`claims/01-emissions/`](claims/01-emissions/) |
+| 01 | Connecticut is "worse off because of the environmental impact" of gas generation | Not supported — on CCEA's own 2001 base year, generation rose +47% while CO₂ fell, intensity dropped 34%, and the state's consumption-based GHG inventory shows electric emissions down ~75% | [`claims/01-emissions/`](claims/01-emissions/) |
 
 _(More claims to be added.)_
 
@@ -69,6 +69,11 @@ analysis stays anchored to the official record rather than a stale copy.
 
 - **EIA — Emissions by State by Year** (CO₂, SO₂, NOx from the electric power
   sector): <https://www.eia.gov/electricity/data/state/emission_annual.xlsx>
+- **EIA — Net Generation by State** (electricity generated, MWh, by fuel):
+  <https://www.eia.gov/electricity/data/state/annual_generation_state.xls>
+- **CT DEEP — Connecticut Greenhouse Gas Emissions Inventory 1990–2021**
+  (consumption-based, the GWSA accounting basis):
+  <https://portal.ct.gov/-/media/deep/climatechange/1990-2021-ghg-inventory/deep_ghg_report_90-21_final.pdf>
 
 ## Methodology notes
 

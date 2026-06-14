@@ -1,0 +1,14 @@
+# Connecticut electric power sector GHG emissions (MMTCO2e), CONSUMPTION-BASED.
+# Source: CT DEEP, Connecticut Greenhouse Gas Emissions Inventory 1990-2021, Table 1 (p.10)
+#   and Electric Power Sector section (p.16). Manually transcribed from the PDF.
+#   https://portal.ct.gov/-/media/deep/climatechange/1990-2021-ghg-inventory/deep_ghg_report_90-21_final.pdf
+# "generation_in_state" = emissions from electricity GENERATED in CT (EIA-based);
+# "consumption_in_state" = emissions from electricity CONSUMED in CT (the GWSA accounting basis).
+# Blank = not reported for that year in the cited tables.
+year,electric_consumption_mmtco2e,generation_in_state_mmtco2e
+1990,11.9,
+2001,12.3,
+2004,12.2,
+2019,5.69,9.5
+2020,3.20,10.2
+2021,3.04,11.0
