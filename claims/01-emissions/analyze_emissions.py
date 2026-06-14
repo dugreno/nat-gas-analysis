@@ -96,30 +96,32 @@ def pct(old: float, new: float) -> float:
     return float("nan") if old == 0 else (new - old) / old * 100.0
 
 
-def summarize(series: pd.DataFrame, label: str) -> pd.DataFrame:
-    """Per-pollutant baseline/peak/latest summary for a totals time series.
+def summarize(series: pd.DataFrame, label: str, ref_year: int) -> pd.DataFrame:
+    """Per-pollutant summary anchored on a chosen reference year.
 
-    Column names are fixed (not f-strings of the year) so summaries for
-    different regions/pollutants concatenate cleanly into one table.
+    Reports the reference year (default 2000, matching the CBIA article), the
+    all-time peak, and the latest year, with percent changes against both the
+    reference and the peak. Column names are fixed strings (the year values live
+    in cells, not headers) so summaries for different regions concatenate cleanly.
     """
     rows = []
-    base_year, latest_year = int(series.index.min()), int(series.index.max())
+    latest_year = int(series.index.max())
     for pol in series.columns:
         s = series[pol]
-        base, latest = s.loc[base_year], s.loc[latest_year]
+        ref, latest = s.loc[ref_year], s.loc[latest_year]
         peak_year = int(s.idxmax())
         peak = s.loc[peak_year]
         rows.append(
             {
                 "Region": label,
                 "Pollutant": pol,
-                "Baseline Year": base_year,
-                "Baseline": round(base),
-                "Peak Year": peak_year,
-                "Peak": round(peak),
+                "Ref Year": ref_year,
+                "Ref": round(ref),
                 "Latest Year": latest_year,
                 "Latest": round(latest),
-                "% chg vs baseline": round(pct(base, latest), 1),
+                "% chg vs ref": round(pct(ref, latest), 1),
+                "Peak Year": peak_year,
+                "Peak": round(peak),
                 "% chg vs peak": round(pct(peak, latest), 1),
             }
         )
@@ -145,16 +147,17 @@ def to_markdown_table(df: pd.DataFrame) -> str:
     return "\n".join(lines) + "\n"
 
 
-def plot_pollutant_trends(series: pd.DataFrame, state: str) -> Path:
-    """Three stacked panels: CO2, SO2, NOx over time, each indexed to 1990=100."""
+def plot_pollutant_trends(series: pd.DataFrame, state: str, ref_year: int, xcheck: int) -> Path:
+    """Three stacked panels: CO2, SO2, NOx over time, each indexed to ref_year=100."""
     fig, axes = plt.subplots(3, 1, figsize=(9, 10), sharex=True)
-    base_year = series.index.min()
     for ax, pol in zip(axes, ["CO2", "SO2", "NOx"]):
         s = series[pol]
-        indexed = s / s.loc[base_year] * 100.0
+        indexed = s / s.loc[ref_year] * 100.0
         ax.plot(s.index, indexed, color="#1f4e79", linewidth=2)
         ax.axhline(100, color="#999", linestyle="--", linewidth=1)
-        ax.set_ylabel(f"{pol}\n({base_year} = 100)")
+        # Mark the cross-check year (CCEA's 2007 pivot) for transparency.
+        ax.axvline(xcheck, color="#c44", linestyle=":", linewidth=1)
+        ax.set_ylabel(f"{pol}\n({ref_year} = 100)")
         ax.grid(True, alpha=0.3)
         latest_year = s.index.max()
         ax.annotate(
@@ -166,8 +169,16 @@ def plot_pollutant_trends(series: pd.DataFrame, state: str) -> Path:
             fontsize=9,
             color="#1f4e79",
         )
+    axes[0].annotate(
+        f"{xcheck}",
+        xy=(xcheck, axes[0].get_ylim()[1]),
+        xytext=(3, -12),
+        textcoords="offset points",
+        fontsize=8,
+        color="#c44",
+    )
     axes[0].set_title(
-        f"{state} electric-power-sector emissions, indexed to {base_year}=100\n"
+        f"{state} electric-power-sector emissions, indexed to {ref_year}=100\n"
         "Source: EIA, Emissions by State by Year",
         fontsize=11,
     )
@@ -213,6 +224,20 @@ def main() -> None:
         default="CT",
         help="Two-letter state code to analyze (default: CT). Use US-TOTAL for the nation.",
     )
+    parser.add_argument(
+        "--baseline",
+        type=int,
+        default=2000,
+        help="Reference year for percent-change headlines (default: 2000, the "
+        "baseline used in the CBIA article).",
+    )
+    parser.add_argument(
+        "--cross-check",
+        type=int,
+        default=2007,
+        help="A second reference year to report (default: 2007, the year CCEA "
+        "cites as the start of declining in-state consumption).",
+    )
     args = parser.parse_args()
     state = args.state.upper()
 
@@ -227,33 +252,37 @@ def main() -> None:
     us_totals = sector_totals(df, "US-TOTAL")
     fuel = co2_by_fuel(df, state)
 
+    first_year, latest_year = int(state_totals.index.min()), int(state_totals.index.max())
+    ref, xcheck = args.baseline, args.cross_check
+    for yr in (ref, xcheck):
+        if yr not in state_totals.index:
+            raise SystemExit(f"Year {yr} not in data range {first_year}-{latest_year}.")
+
     # Console report -----------------------------------------------------------
-    base_year, latest_year = state_totals.index.min(), state_totals.index.max()
-    print(f"\n{'='*70}\nClaim 01 - 'Emissions are up'\n{'='*70}")
-    print(f"State: {state}   |   Range: {base_year}-{latest_year}")
+    print(f"\n{'='*70}\nClaim 01 - emissions / environmental impact\n{'='*70}")
+    print(f"State: {state}   |   Data range: {first_year}-{latest_year}")
+    print(f"Headline baseline: {ref}   |   Cross-check baseline: {xcheck}")
     print(f"Source: EIA, Emissions by State by Year ({DATA_FILE.name})\n")
 
     summary = pd.concat(
-        [summarize(state_totals, state), summarize(us_totals, "US-TOTAL")],
+        [summarize(state_totals, state, ref), summarize(us_totals, "US-TOTAL", ref)],
         ignore_index=True,
     )
     print(summary.to_string(index=False))
 
-    co2 = state_totals["CO2"]
-    print(f"\n-- Fuel switch ({state}, CO2 in metric tons) --")
-    for yr in [base_year, latest_year]:
+    print(f"\n-- {state} fuel switch (CO2, metric tons) --")
+    for yr in [ref, latest_year]:
         row = {f: int(fuel.loc[yr, f]) for f in FOSSIL_FUELS}
         print(f"  {yr}: {row}")
-    print(
-        f"\n  CO2:  {int(co2.loc[base_year]):,} -> {int(co2.loc[latest_year]):,} t "
-        f"({pct(co2.loc[base_year], co2.loc[latest_year]):+.1f}% vs {base_year}; "
-        f"{pct(co2.max(), co2.loc[latest_year]):+.1f}% vs peak {co2.idxmax()})"
-    )
-    for pol in ["SO2", "NOx"]:
+
+    # Show each pollutant against BOTH baselines so the 2007 nuance is explicit.
+    print(f"\n-- {state} pollutant change vs {ref} and vs {xcheck} --")
+    for pol in ["CO2", "SO2", "NOx"]:
         s = state_totals[pol]
         print(
-            f"  {pol}:  {int(s.loc[base_year]):,} -> {int(s.loc[latest_year]):,} t "
-            f"({pct(s.loc[base_year], s.loc[latest_year]):+.1f}% vs {base_year})"
+            f"  {pol:3}: vs {ref}: {pct(s.loc[ref], s.loc[latest_year]):+6.1f}%   "
+            f"vs {xcheck}: {pct(s.loc[xcheck], s.loc[latest_year]):+6.1f}%   "
+            f"({int(s.loc[ref]):,} / {int(s.loc[xcheck]):,} -> {int(s.loc[latest_year]):,})"
         )
 
     # File outputs -------------------------------------------------------------
@@ -265,7 +294,7 @@ def main() -> None:
         fh.write(to_markdown_table(summary))
         fh.write("\n")
 
-    trends_png = plot_pollutant_trends(state_totals, state)
+    trends_png = plot_pollutant_trends(state_totals, state, ref, xcheck)
     mix_png = plot_co2_fuel_mix(fuel, state)
 
     print(f"\nWrote outputs to {OUTPUT_DIR}/")

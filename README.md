@@ -8,8 +8,12 @@ Every figure cited here is reproducible: the code that downloads the source
 data and produces the numbers and charts lives in this repository, so anyone
 can re-run it and check the result.
 
-> **Companion article:** I summarized this analysis in an op-ed/article
-> published on the CBIA website. _(Add the link here.)_
+> **CCEA report under review:** *How Did We Get Here?*
+> [[PDF]](https://www.conservationeducation.org/uploads/6/2/0/1/6201942/how_did_we_get_here_-_ccea_report.pdf)
+>
+> **Companion article:** "Natural Gas Does Not Make Electricity More Expensive,"
+> published on the CBIA website
+> [[link]](https://www.cbia.com/news/issues-policies/natural-gas-does-not-make-electricity-more-expensive).
 
 ## Why this exists
 
@@ -23,7 +27,7 @@ says. Where a claim holds up, it says so; where it doesn't, it shows why.
 
 | # | Claim (as stated by CCEA) | Status | Analysis |
 |---|---------------------------|--------|----------|
-| 01 | "Emissions are up" | Not supported by the power-sector record | [`claims/01-emissions/`](claims/01-emissions/) |
+| 01 | Connecticut is "worse off because of the environmental impact" of gas generation | Not supported — power-sector CO₂ −13%, NOx −77%, SO₂ −99% since 2000 even as generation rose ~50% | [`claims/01-emissions/`](claims/01-emissions/) |
 
 _(More claims to be added.)_
 

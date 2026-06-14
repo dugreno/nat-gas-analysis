@@ -1,87 +1,119 @@
-# Claim 01 — "Emissions are up"
+# Claim 01 — Emissions / environmental impact
 
-## The claim
+**CCEA report:** *How Did We Get Here?* (Connecticut Center for Economic
+Analysis / Fred Carstensen)
+[[PDF]](https://www.conservationeducation.org/uploads/6/2/0/1/6201942/how_did_we_get_here_-_ccea_report.pdf)
 
-> _"[Paste the exact CCEA / Carstensen quote here, with citation and date.]"_
+**Rebuttal article:** "Natural Gas Does Not Make Electricity More Expensive,"
+CBIA
+[[link]](https://www.cbia.com/news/issues-policies/natural-gas-does-not-make-electricity-more-expensive)
 
-The claim, as commonly stated, is that the shift toward natural gas in the power
-sector has **driven emissions up**. This page tests that against the official
-record.
+---
+
+## What CCEA actually claims
+
+CCEA does **not** claim natural gas raised total emissions outright — it
+concedes the opposite happened initially:
+
+> "…a startling expansion of investments in utility power generation … *initially
+> helped to significantly reduce greenhouse gas emission relative to the use of
+> other fossil fuels*." — Executive Summary
+
+Their argument is that Connecticut is nonetheless **"worse off because of the
+environmental impact"** because it now generates far more power than it consumes
+and exports the surplus, so it keeps the pollution while shipping the
+electricity (and the benefit) out of state:
+
+> "…sending so much of the power generated in-state out-of-state does mean that
+> Connecticut citizens endured pollution costs from **7.2 MMTCO2e on additional
+> emissions**. In 2025, the World Bank values these CO2e emissions from
+> electricity generation at **$506.8M**…"
+
+> "Note that energy consumption in Connecticut itself has been declining since
+> **2007**, meaning that public health costs in the state resulting from
+> shipping power out-of-state have **been rising**."
+
+So the testable empirical claim is: **Connecticut's in-state power-sector
+emissions burden has been rising** (post-2007, driven by export-oriented gas
+generation), making the state environmentally worse off.
 
 ## The data
 
-**Source:** U.S. Energy Information Administration (EIA), *Emissions by State by
-Year* — the federal government's official accounting of **electric-power-sector**
-emissions of CO₂, SO₂, and NOx, by state and fuel, from 1990 to 2024.
+**Source:** EIA, *Emissions by State by Year* — official electric-power-sector
+CO₂, SO₂, and NOx by state and fuel, 1990–2024.
+URL: <https://www.eia.gov/electricity/data/state/emission_annual.xlsx>
+Scope: **electric power sector only** (not economy-wide).
 
-- URL: <https://www.eia.gov/electricity/data/state/emission_annual.xlsx>
-- Scope: **electric power sector only** (not economy-wide; transportation and
-  building heating are not included here).
-- Geography: Connecticut, with the U.S. total for context. (CCEA is the
-  Connecticut Center for Economic Analysis, so Connecticut is the natural focus.)
-
-Reproduce everything on this page:
+Reproduce:
 
 ```bash
 python scripts/download_data.py
-python claims/01-emissions/analyze_emissions.py          # Connecticut
+python claims/01-emissions/analyze_emissions.py              # CT, 2000 baseline
 python claims/01-emissions/analyze_emissions.py --state US-TOTAL
 ```
 
 ## What the data shows
 
-Connecticut power-sector emissions, EIA *Total Electric Power Industry*:
+Connecticut power-sector emissions, **indexed to 2000** (the baseline used in the
+CBIA article), with the all-time peak for context:
 
-| Pollutant | 1990 | Peak | Latest (2024) | vs 1990 | vs peak |
-|-----------|-----:|-----:|--------------:|--------:|--------:|
-| CO₂ (metric tons) | 12,103,268 | 14,495,967 (1997) | 11,001,595 | **−9.1%** | **−24.1%** |
-| SO₂ (metric tons) | 52,235 | 53,078 (1997) | 313 | **−99.4%** | **−99.4%** |
-| NOx (metric tons) | 31,512 | 31,512 (1990) | 4,363 | **−86.2%** | **−86.2%** |
+| Pollutant | 2000 | Latest (2024) | **vs 2000** | Peak | vs peak |
+|-----------|-----:|--------------:|------------:|-----:|--------:|
+| CO₂ (metric tons) | 12,651,961 | 11,001,595 | **−13.0%** | 14,495,967 (1997) | −24.1% |
+| SO₂ (metric tons) | 51,721 | 313 | **−99.4%** | 53,078 (1997) | −99.4% |
+| NOx (metric tons) | 18,821 | 4,363 | **−76.8%** | 31,512 (1990) | −86.2% |
 
-The national picture moves the same direction (U.S. power-sector CO₂ −21% vs
-1990 and −40% vs its 2007 peak; SO₂ −95%; NOx −86%).
+These are the figures cited in the article — CO₂ down 13%, SO₂ down 99%, NOx
+down 77% since 2000 — **and CCEA's own report says generation rose ~50% over
+essentially the same period** ("electricity generation 2001-2022/4 rose by nearly
+50%"). Emissions fell sharply *while output grew by half*.
 
-![Connecticut power-sector emissions indexed to 1990=100](output/CT_pollutant_trends.png)
+![CT power-sector emissions indexed to 2000=100](output/CT_pollutant_trends.png)
 
-### The fuel switch behind it
+### The driver: coal and oil displaced by gas
 
-Connecticut's power sector ran on **coal and oil** in 1990. By 2024 those were
-almost entirely displaced by natural gas — and that switch is exactly what drove
-the emissions down:
-
-| Fuel (CO₂, metric tons) | 1990 | 2024 |
+| Fuel (CO₂, metric tons) | 2000 | 2024 |
 |-------------------------|-----:|-----:|
-| Coal | 3,560,469 | 0 |
-| Petroleum (oil) | 7,382,393 | 81,131 |
-| Natural Gas | 697,643 | 10,214,445 |
+| Coal | 3,370,556 | 0 |
+| Petroleum (oil) | 5,858,878 | 81,131 |
+| Natural Gas | 2,241,028 | 10,214,445 |
 
-![Connecticut power-sector CO₂ by fuel](output/CT_co2_fuel_mix.png)
+The SO₂ and NOx collapse is almost entirely the retirement of coal and oil —
+exactly the displacement the article attributes to natural gas.
+
+![CT power-sector CO₂ by fuel](output/CT_co2_fuel_mix.png)
 
 ## Verdict
 
-**The claim that power-sector emissions are "up" is not supported by the EIA
-record.** Every pollutant EIA tracks is *below* its 1990 level and far below its
-peak:
+**The "environmentally worse off" framing is not supported by the absolute
+emissions record.** Even as Connecticut became New England's largest generator
+and output rose ~50%, total power-sector CO₂ fell 13%, and the criteria
+pollutants that most directly drive local public health — NOx and SO₂ — fell 77%
+and 99%. A state whose air pollution from power generation has fallen by these
+margins is not plausibly "worse off" environmentally because of that generation.
 
-- **SO₂ is down 99.4%** and **NOx is down 86%** — the criteria pollutants most
-  directly tied to public health (smog, acid rain, fine particulates).
-- **CO₂ is down 9% from 1990 and 24% from its peak**, even though Connecticut's
-  power sector generates more electricity today than it did then.
+## Honest treatment of CCEA's strongest sub-points
 
-The driver is unambiguous in the fuel data: natural gas displaced the coal and
-oil that Connecticut's grid used to burn.
+A credible line-by-line review has to engage CCEA's framing on its own terms:
 
-## An honest caveat
+1. **The 2007 baseline.** CCEA anchors "rising costs" on 2007, when in-state
+   *consumption* peaked. Measured from 2007, CT power-sector **CO₂ is up ~5.1%**
+   (10.46M → 11.00M t). That is the kernel of truth in the claim — but it is
+   baseline-shopping: from 2000, or from the 1997/2007 emissions peaks, CO₂ is
+   down, and even from 2007 **SO₂ (−94%) and NOx (−49%) kept falling steeply**.
+   The 2007 line is marked on the chart above so readers can see this directly.
 
-Intellectual honesty requires noting the one place the trend is *not* monotonic:
-Connecticut power-sector **CO₂ rose from its 2017 low (~7.9M t) back to ~11.0M t
-in 2024**. So a critic could cherry-pick "CO₂ is up since 2017" — but that is a
-selective baseline. Against the standard 1990 reference, and against the
-all-time peak, CO₂ is down, and the health-relevant criteria pollutants have
-collapsed. The choice of baseline year, pollutant, and scope (power sector vs.
-economy-wide) determines the answer, which is precisely why this analysis states
-all three explicitly.
+2. **"7.2 MMTCO2e of additional emissions" from exports.** CCEA assigns the CO₂
+   of exported power to Connecticut and prices it at the social cost of carbon.
+   But (a) CO₂ is a global pollutant — those tons are not local "public health"
+   exposure; and (b) exported gas generation displaces *dirtier* marginal
+   generation elsewhere in the region, so attributing it as pure added harm to
+   Connecticut double-counts. For the *local* health pollutants that actually
+   vary with where power is burned (NOx, SO₂), the in-state trend is sharply
+   down, and per the article's EPA point, **90–95% of Connecticut's measured
+   pollution is attributable to out-of-state sources** — not its own power plants.
 
-> **To finalize:** drop the exact CCEA quote (with its baseline year and whether
-> it refers to the power sector or the whole economy) into "The claim" above so
-> the rebuttal addresses their wording precisely.
+3. **Scope.** This dataset is the electric power sector only. CCEA's claim is
+   also about the power sector, so the comparison is apples-to-apples; economy-
+   wide emissions (transportation, heating) are a separate question handled under
+   other claims.
