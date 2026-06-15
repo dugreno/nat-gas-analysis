@@ -1,0 +1,13 @@
+# Raw data downloads (regenerate with scripts/download_data.py)
+data/raw/*
+!data/raw/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
