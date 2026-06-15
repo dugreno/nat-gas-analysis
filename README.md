@@ -28,6 +28,7 @@ says. Where a claim holds up, it says so; where it doesn't, it shows why.
 | # | Claim (as stated by CCEA) | Status | Analysis |
 |---|---------------------------|--------|----------|
 | 01 | Connecticut is "worse off because of the environmental impact" of gas generation | Not supported — on CCEA's own 2001 base year, generation rose +47% while CO₂ fell, intensity dropped 34%, and the state's consumption-based GHG inventory shows electric emissions down ~75% | [`claims/01-emissions/`](claims/01-emissions/) |
+| 02 | Gas expansion "generated no significant benefits to Connecticut's economy" | Interpretive claim, not supported — rests on an unanalyzed correlation with no mechanism, counterfactual, or controls | [`claims/02-economic-benefit/`](claims/02-economic-benefit/) |
 
 _(More claims to be added.)_
 
