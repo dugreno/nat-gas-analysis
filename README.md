@@ -29,6 +29,7 @@ says. Where a claim holds up, it says so; where it doesn't, it shows why.
 |---|---------------------------|--------|----------|
 | 01 | Connecticut is "worse off because of the environmental impact" of gas generation | Not supported — on CCEA's own 2001 base year, generation rose +47% while CO₂ fell, intensity dropped 34%, and the state's consumption-based GHG inventory shows electric emissions down ~75% | [`claims/01-emissions/`](claims/01-emissions/) |
 | 02 | Gas expansion "generated no significant benefits to Connecticut's economy" | Interpretive claim, not supported — rests on an unanalyzed correlation with no mechanism, counterfactual, or controls | [`claims/02-economic-benefit/`](claims/02-economic-benefit/) |
+| 03 | Expanding gas "delivered no reduction in rates" / gas made power expensive | Layer 1 (descriptive) — not supported: from both 2001 (CCEA's baseline) and 2007, the U.S. gas share roughly doubled while real prices ended lower, and across states adoption is a near-zero predictor of price change (R²≈0.02–0.09). CT and TX sit at similar gas shares but CT pays 2.5× more, and CT's real-price rise happened *before* its gas build-out. Layers 2–3 (panel, bill decomposition) to follow | [`claims/03-rates/`](claims/03-rates/) |
 
 _(More claims to be added.)_
 
@@ -72,6 +73,12 @@ analysis stays anchored to the official record rather than a stale copy.
   sector): <https://www.eia.gov/electricity/data/state/emission_annual.xlsx>
 - **EIA — Net Generation by State** (electricity generated, MWh, by fuel):
   <https://www.eia.gov/electricity/data/state/annual_generation_state.xls>
+- **EIA — Average retail price of electricity by state** (all sectors,
+  cents/kWh), from the EIA bulk electricity archive (series
+  `ELEC.PRICE.<ST>-ALL.A`); stays current where the standalone state price file
+  was frozen at 2020: <https://api.eia.gov/bulk/ELEC.zip>
+- **BLS — CPI-U** (U.S. city average, all items, annual average; deflator for
+  real prices): series `CUUR0000SA0`.
 - **CT DEEP — Connecticut Greenhouse Gas Emissions Inventory 1990–2021**
   (consumption-based, the GWSA accounting basis):
   <https://portal.ct.gov/-/media/deep/climatechange/1990-2021-ghg-inventory/deep_ghg_report_90-21_final.pdf>

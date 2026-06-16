@@ -1,0 +1,27 @@
+year,component,group,cents_per_kwh,utility,rate_class,source
+2006,Generation (GSC),Supply (energy),10.10,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,FMCC-Generation,Supply (energy),0.66,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,Transmission,Wires (transmission & distribution),0.59,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,Transmission Adjustment,Wires (transmission & distribution),0.19,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,Distribution,Wires (transmission & distribution),2.16,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,Combined Public Benefits,Public-benefit & reliability,0.31,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,FMCC-Distribution (NBFMCC),Public-benefit & reliability,1.88,CL&P,Residential non-heating,OLR-2006-R-0477
+2006,Competitive Transition Assessment (CTA),Stranded-cost transition (CTA),1.02,CL&P,Residential non-heating,OLR-2006-R-0477
+2019,Generation (GSC),Supply (energy),8.183,Eversource,Residential Rate 1,OCC-2019-08
+2019,Transmission,Wires (transmission & distribution),2.928,Eversource,Residential Rate 1,OCC-2019-08
+2019,Distribution,Wires (transmission & distribution),5.739,Eversource,Residential Rate 1,OCC-2019-08
+2019,Systems Benefits Charge,Public-benefit & reliability,0.559,Eversource,Residential Rate 1,OCC-2019-08
+2019,Renewable Energy Investment,Public-benefit & reliability,0.10,Eversource,Residential Rate 1,OCC-2019-08
+2019,Conservation & Load Mgmt (incl CAM),Public-benefit & reliability,0.60,Eversource,Residential Rate 1,OCC-2019-08
+2019,NBFMCC (FMCC-Delivery),Public-benefit & reliability,0.890,Eversource,Residential Rate 1,OCC-2019-08
+2019,Competitive Transition Assessment (CTA),Stranded-cost transition (CTA),0.00,Eversource,Residential Rate 1,OCC-2019-08
+2022,Generation (GSC net BFMCC),Supply (energy),11.484,Eversource,Residential Rate 1,OCC-2022-01
+2022,Transmission,Wires (transmission & distribution),3.266,Eversource,Residential Rate 1,OCC-2022-01
+2022,Distribution,Wires (transmission & distribution),5.844,Eversource,Residential Rate 1,OCC-2022-01
+2022,Electric System Improvements (ESI),Wires (transmission & distribution),0.582,Eversource,Residential Rate 1,OCC-2022-01
+2022,Revenue Adjustment Mechanism (RAM),Wires (transmission & distribution),0.162,Eversource,Residential Rate 1,OCC-2022-01
+2022,Systems Benefits Charge,Public-benefit & reliability,0.921,Eversource,Residential Rate 1,OCC-2022-01
+2022,Renewable Energy Investment,Public-benefit & reliability,0.10,Eversource,Residential Rate 1,OCC-2022-01
+2022,Conservation Adjustment Mechanism (CAM),Public-benefit & reliability,0.515,Eversource,Residential Rate 1,OCC-2022-01
+2022,NBFMCC (incl Millstone contract),Public-benefit & reliability,1.585,Eversource,Residential Rate 1,OCC-2022-01
+2022,Competitive Transition Assessment (CTA),Stranded-cost transition (CTA),-0.116,Eversource,Residential Rate 1,OCC-2022-01
